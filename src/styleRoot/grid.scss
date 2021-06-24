@@ -1,0 +1,57 @@
+@import './color.scss';
+@import './config.scss';
+.wrap{
+    [class^='col--']{
+        &:not(:last-child){
+            margin-right: $col-margin;
+        }
+    }
+    &:not(:last-child){
+        margin-bottom: 2rem;
+    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: $grid-width;
+    margin: 0 auto;
+    &.wrap-full{
+        max-width: $grid-full;
+    }
+}
+
+
+
+.col--1--of--2{
+    width: calc((100%-#{$col-margin})/2);
+}
+
+.col--1--of--3{
+    width: calc((100%-#{$col-margin})/3);
+}
+
+.col--2--of--3{
+    width: calc(2*(100%-#{$col-margin})/3);
+
+}
+
+.col--1--of--4{
+    width: calc((100%-#{$col-margin})/4);
+
+}
+.col--2--of--4{
+    width: calc(2*(100%-#{$col-margin})/4);
+
+}
+
+.col--3--of--4{
+    width: calc(3*(100%-#{$col-margin})/4);
+}
+
+.col--1--of--5{
+    width: calc((100%-#{$col-margin})/5);
+
+}
+.col--2--of--5{
+    width: calc(2*(100%-#{$col-margin})/5);
+
+}
