@@ -17,7 +17,7 @@ export const ItemProject = ({ loadAccount, project, loadProject }) => {
   const [step, setStep] = useState(1);
   const [modalState, setModalState] = useState(enumState.HIDDEN);
   const [indexState, setIndexState] = useState(0);
-
+  const [textModal, setTextModal] = useState("fund token");
   useEffect(() => {
     const index = getStateProject(0).index;
     setIndexState(index !== 0 ? index - 1 : 0);
@@ -129,7 +129,7 @@ export const ItemProject = ({ loadAccount, project, loadProject }) => {
 
   const handleShowModal = (step) => {
     setStep(+step);
-      setModalState(enumState.VISIBLE);
+    setModalState(enumState.VISIBLE);
   };
 
   const handleFinishConfirm = () => {
@@ -162,6 +162,7 @@ export const ItemProject = ({ loadAccount, project, loadProject }) => {
           setStep(2);
           loadProject();
           setTimeout(() => {
+            setTextModal("fund token to");
             setModalState(enumState.VISIBLE);
           }, 200);
         });
@@ -176,10 +177,7 @@ export const ItemProject = ({ loadAccount, project, loadProject }) => {
       const investor = accounts[0];
 
       crowdfunding.methods
-        .setInvestorApproved(
-          project.projectMain.id,
-          project.projectMain.owner
-        )
+        .setInvestorApproved(project.projectMain.id, project.projectMain.owner)
         .send({
           from: investor,
         })
@@ -190,11 +188,12 @@ export const ItemProject = ({ loadAccount, project, loadProject }) => {
           setStep(2);
           loadProject();
           setTimeout(() => {
+            setTextModal("accepted");
             setModalState(enumState.VISIBLE);
           }, 200);
         });
     })();
-  }
+  };
 
   const HandleRejectProject = () => {
     (async () => {
@@ -213,6 +212,7 @@ export const ItemProject = ({ loadAccount, project, loadProject }) => {
           setStep(2);
           loadProject();
           setTimeout(() => {
+            setTextModal("rejected");
             setModalState(enumState.VISIBLE);
           }, 200);
         });
@@ -308,7 +308,7 @@ export const ItemProject = ({ loadAccount, project, loadProject }) => {
               ></i>
               <p className="status-modal__title">Success</p>
               <h5 className="status-modal__desc">
-                You have fund token to project successfully.
+                You have {textModal} project successfully.
               </h5>
             </div>
 

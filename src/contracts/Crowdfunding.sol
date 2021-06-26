@@ -312,7 +312,7 @@ contract Crowdfunding {
             msg.sender == admin ||
             msg.sender == target.owner ||
             stateProjects[idProject][target.state].percentRemoved >= 51
-        )
+        ) {
             for (uint256 i = 0; i < detail.investors.length; i += 1) {
                 address investor = detail.investors[i];
 
@@ -332,9 +332,9 @@ contract Crowdfunding {
                 tokenContract.transfer(investor, payment);
             }
 
-        target.isFinished = true;
-        projects[owner][idProject] = target;
-
+            target.isFinished = true;
+            projects[owner][idProject] = target;
+        }
         emit RemoveProject(refunc);
     }
 
