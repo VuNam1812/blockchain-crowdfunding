@@ -1,0 +1,15 @@
+@import '../../../../../styleRoot/color.scss';
+
+.home--base{
+    &__title{
+        font-weight: 900;
+        font-family: 'Montserrat';
+        font-size: 3rem;
+        color: $--white;
+        text-shadow: 0px 5px 15px rgba($color: $--dark, $alpha: 1);
+
+        .text--warning{
+            color: $--warning;
+        }
+    }
+}

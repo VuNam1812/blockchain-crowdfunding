@@ -1,0 +1,15 @@
+@import '../../../styleRoot/color.scss';
+
+.home{
+    overflow: hidden;
+    height: calc(91vh - 2px);
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    
+}
